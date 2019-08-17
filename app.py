@@ -13,12 +13,14 @@
 
 # -*- coding: utf-8 -*-
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
+from wtforms.validators import DataRequired
 from iris import iris_classifier
 from pprint import pprint
 import numpy as np
 import requests
 import json
+
 
 # Main app:
 app = Flask(__name__)
@@ -32,6 +34,11 @@ species = {
     '1': 'I. versicolor',
     '2': 'I. virginica'
     }
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 # API MAIN STRUCTURE:
